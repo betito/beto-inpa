@@ -65,11 +65,11 @@ print ("CPF = $cpf <br/>") ;
         
         <h2>Dados da Publica&ccedil;&atilde;o</h2><hr /><p>
         
-        <INPUT TYPE="RADIO" NAME="pub" VALUE="Disserta&ccedil;&atilde;o" >Disserta&ccedil;&atilde;o<p>
-		<INPUT TYPE="RADIO" NAME="pub" VALUE="Tese">Tese<p>
-  		<INPUT TYPE="RADIO" NAME="pub" VALUE="Livro">Livro<p> 
-        <INPUT TYPE="RADIO" NAME="pub" VALUE="Outro">Outro:
-        <input id="outro" name="outro2" class="text" size="60"/><p>
+        <INPUT TYPE="RADIO" NAME="pub" VALUE="Disserta&ccedil;&atilde;o" onclick="hideElement('outro_pub');" />Disserta&ccedil;&atilde;o<p>
+		<INPUT TYPE="RADIO" NAME="pub" VALUE="Tese" onclick="hideElement('outro_pub');" />Tese<p>
+  		<INPUT TYPE="RADIO" NAME="pub" VALUE="Livro" onclick="hideElement('outro_pub');" />Livro<p> 
+        <INPUT TYPE="RADIO" NAME="pub" VALUE="Outro" id="tipo_pub" onclick="showElement('outro_pub');">Outro:
+        <input id="outro_pub" name="outro_pub" class="text" size="60" /><p>
         
         <label for="Titulo">T&iacute;tulo</label><p>
         <label>
@@ -99,12 +99,13 @@ Se houver)</label><p>
 		<INPUT TYPE="RADIO" NAME="ilust" VALUE="0"><label for="op6">N&atilde;o</label><p>
   		
          <label for="tp_ilust">Tipos de Ilustra&ccedil;&otilde;es</label><p>
-         <INPUT TYPE="checkbox" NAME="tipo_ilust" VALUE="Graficos"><label for="op1">Gr&aacute;ficos</label>
-         <INPUT TYPE="checkbox" NAME="tipo_ilust" VALUE="Fotografias"><label for="op2">Fotografias</label>
-         <INPUT TYPE="checkbox" NAME="tipo_ilust" VALUE="Tabelas"><label for="op3">Tabelas</label>
-         <INPUT TYPE="checkbox" NAME="tipo_ilust" VALUE="Mapas"><label for="op3">Mapas</label>
-         <INPUT TYPE="checkbox" NAME="tipo_ilust" VALUE="Outros"><label for="op4">Outros:<p></label>
-         <input id="outro" name="outro" class="text" size="60"/><p>
+         <INPUT TYPE="checkbox" NAME="tipo_ilust[]" VALUE="Graficos" onclick="hideElement('tipo_ilust');" /><label for="op1">Gr&aacute;ficos</label>
+         <INPUT TYPE="checkbox" NAME="tipo_ilust[]" VALUE="Fotografias" onclick="hideElement('tipo_ilust');" /><label for="op2">Fotografias</label>
+         <INPUT TYPE="checkbox" NAME="tipo_ilust[]" VALUE="Tabelas" onclick="hideElement('tipo_ilust');" /><label for="op3">Tabelas</label>
+         <INPUT TYPE="checkbox" NAME="tipo_ilust[]" VALUE="Mapas" onclick="hideElement('tipo_ilust');" /><label for="op3">Mapas</label>
+         <br/>
+         <INPUT TYPE="checkbox" NAME="tipo_ilust[]" VALUE="Outros" onclick="showElement('tipo_ilust');"><label for="op4">Outros:<p></label>
+         <input id="tipo_ilust" name="tipo_ilust_outro" class="text" size="60"/><p>
          
         <label for="orientador">Orientador</label><p>
         <input id="orientador" name="orientador" class="text" /><p>
@@ -127,11 +128,11 @@ Se houver)</label><p>
         
         <h2>Dados da P&oacute;s-Gradua&ccedil;&atilde;o</h2><hr /><p>
         <label for="inst_pos">Institui&ccedil;&atilde;o do Programa de P&oacute;s-Gradua&ccedil;&atilde;o</label><p>
-        <INPUT TYPE="RADIO" NAME="inst_pos" VALUE="INPA" /><label for="op7">INPA</label><p>
-		<INPUT TYPE="RADIO" NAME="inst_pos" VALUE="INPA/UFAM" /><label for="op8">INPA/UFAM</label><p>
-  		<INPUT TYPE="RADIO" NAME="inst_pos" VALUE="INPA/UEA" /><label for="op9">INPA/UEA</label><p> 
-        <INPUT TYPE="RADIO" id="inst_pos" NAME="inst_pos" VALUE="outra" onclick="mostrarText('inst_pos','outro')"; />
-        <label for="op10">Outra:</label><input id="outro" name="outro" class="text" size="60"/><p>
+        <INPUT TYPE="RADIO" NAME="inst_pos" VALUE="INPA" onclick="hideElement('outroprograma');" /><label for="op7">INPA</label><p>
+		<INPUT TYPE="RADIO" NAME="inst_pos" VALUE="INPA/UFAM" onclick="hideElement('outroprograma');"  /><label for="op8">INPA/UFAM</label><p>
+  		<INPUT TYPE="RADIO" NAME="inst_pos" VALUE="INPA/UEA" onclick="hideElement('outroprograma');" /><label for="op9">INPA/UEA</label><p> 
+        <INPUT TYPE="RADIO" id="inst_pos" NAME="inst_pos" VALUE="outro programa" onclick="showElement('outroprograma');" />
+        <label for="op10">Outra:</label><input id="outroprograma" name="outroprograma" class="text" size="60"/><p>
         
         
         <label for="programa">Programa de P&oacute;s-Gradua&ccedil;&atilde;o</label><p>
@@ -175,6 +176,10 @@ Se houver)</label><p>
     
     </div>
 
+    <script>
+
+		hideAll();
+    </script>
 </form>
 
 

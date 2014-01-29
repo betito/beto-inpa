@@ -40,21 +40,32 @@ if (! $cpf) {
 	$ano_pub = html_entity_decode(htmlentities($_POST ['ano_pub']));
 	$numrom = intval($_POST ['num_rom']);
 	$numara = intval($_POST ['num_ara']);
+	$vks = $_POST ['tipo_ilust'];
+	$ks = "";
+	$i=0;
+	for ($i; $i <  count($vks)-1; $i++){
+		$ks .= $vks[$i]. ", ";
+	}
+	$ks .= $vks[$i];
+	$tipo_ilus = html_entity_decode(htmlentities($ks));
 	$ilust = $_POST ['ilust'];
-	$tipo_ilus = html_entity_decode(htmlentities($_POST ['tipo_ilust']));
+	$tipo_ilus_outro = html_entity_decode(htmlentities($_POST ['tipo_ilust_outro']));
 	$orientador = html_entity_decode(htmlentities($_POST ['orientador']));
 	$coorientador = html_entity_decode(htmlentities($_POST ['coorientador']));
 	$sugestao = html_entity_decode(htmlentities($_POST ['sugestao']));
 	$vks = $_POST ['k'];
-	$ks = $vks[0];
-	for ($i=0; $i <  count($vks); $i++){
-		$ks .= ", " .$vks[$i];
+	$ks = "";
+	$i=0;
+	for ($i; $i <  count($vks)-1; $i++){
+		$ks .= $vks[$i]. ", ";
 	}
+	$ks .= $vks[$i];
 	$keywords = html_entity_decode(htmlentities($ks));
 	$programa = html_entity_decode(htmlentities($_POST ['programa']));
+	$programa = html_entity_decode(htmlentities($_POST ['outroprograma']));
 	$resumo = html_entity_decode(htmlentities($_POST ['resumo']));
 	$linha = html_entity_decode(htmlentities($_POST ['linha_pesq']));
-	$outro2 = html_entity_decode(htmlentities($_POST ['outro2']));
+	$outro2 = html_entity_decode(htmlentities($_POST ['outro_pub']));
 	$inst_pos = html_entity_decode(htmlentities($_POST ['inst_pos']));
 	
 	print "VINCULO:<br/><b>$tipo_vinculo </b><br/>\n";
@@ -97,18 +108,17 @@ if (! $cpf) {
 	$command = $command . "\"$linha\", \"$resumo\"";
 	$command = $command . ");";
 	
-// 	print ("QUERY = " . $res . "<br/>") ;
 	print ("COMMAND :: $command<br/>\n");
-	$res = Query ( $command );
+// 	$res = Query ( $command );
 	
-	if ($res) {
+// 	if ($res) {
 		
-		print ("Dados Salvos com Sucesso!") ;
-		print ("<br/><a href=\"index.php\">Continuar</a>") ;
-	} else {
+// 		print ("Dados Salvos com Sucesso!") ;
+// 		print ("<br/><a href=\"index.php\">Continuar</a>") ;
+// 	} else {
 		
-		print ("Erro na opera&ccedil&atilde;: Salvar Novo Livro\n<br/>".mysql_error()) ;
-	}
+// 		print ("Erro na opera&ccedil&atilde;: Salvar Novo Livro\n<br/>".mysql_error()) ;
+// 	}
 	
 	print ("<br/>") ;
 }

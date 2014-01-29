@@ -11,12 +11,28 @@ function addButtons(id) {
 
 }
 
-function showElement(obj, elemId) {
 
-	if ($('#'.obj).checked) {
-		$("#".elemId).show();
-	}else {
-		$("#".elemId).hide();
-	}
 
+
+function showElement(elemId) {
+
+	$('#' + elemId).show();
+
+}
+
+
+
+function hideElement(elemId) {
+
+	$('#' + elemId).hide();
+
+}
+
+function hideAll (){
+	
+	$('#outro_pub').hide();
+	$('#outro').hide();
+	$('#tipo_ilust').hide();
+	$('#outroprograma').hide();
+	
 }
