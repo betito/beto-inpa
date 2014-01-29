@@ -17,6 +17,7 @@ include 'connection.php';
 $cpf = $_POST ['cpf'];
 $nome = $_POST ['nome'];
 $email = $_POST ['email'];
+$telefone = $_POST ['telefone'];
 
 $conn = Connect ();
 
@@ -25,7 +26,7 @@ if (! $conn) {
 	exit ( 1 );
 }
 
-$command = "insert into autor (cpf, nome, email) values (\"$cpf\", \"$nome\", \"$email\");";
+$command = "insert into autor (cpf, nome, email, telefone) values (\"$cpf\", \"$nome\", \"$email\", \"$telefone\");";
 $res = Query ( $command );
 
 print ("QUERY = " . $res . "<br/>") ;
@@ -33,11 +34,10 @@ print ("QUERY = " . $res . "<br/>") ;
 if ($res) {
 	
 	print ("Dados Criados com Sucesso!") ;
-	print ("<br/><a href=\"index.php\">Continuar</a>");
-	
+	print ("<br/><a href=\"index.php\">Continuar</a>") ;
 } else {
 	
-	print ("Erro na operação: Salvar\n") ;
+	print ("Erro na operação: Salvar\n<br/>" . mysql_error ()) ;
 }
 
 print ("<br/>") ;

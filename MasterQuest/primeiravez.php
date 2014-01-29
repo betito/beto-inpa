@@ -17,6 +17,9 @@ print ("CPF = $cpf <br/>") ;
 		<tr>
 			<td align="right">E-MAIL ::</td><td><input type="text" name="email" /> </td>
 		</tr>
+		<tr>
+			<td align="right">TELEFONE ::</td><td><input type="text" name="telefone" /> </td>
+		</tr>
 	
 	</table> <br/>
 	
