@@ -60,7 +60,7 @@ input, radius {
 	
 	
 .botao {
-	background-color: #86cdeb;
+	background-color: #006699;
 	font-weight: bold;
 	width: 150px;
 	padding: 5px;
@@ -70,22 +70,23 @@ input, radius {
 	border-width: 2px;
 	border-style: solid;
 	float: left;
+	color: white;
 	
 }
 
 .botao:hover{
-	background-color: #0f628b;
+	background-color: #0066CC;
 	border-style: solid;
 	border-width: 2px;
 	cursor: pointer;
+	color: white;
 }
 
 .abotao {
 	text-decoration: none;
-	color: black;
+	color: white;
 }
 
 .abotao:VISITED {
-	text-decoration: none;
 	color: white;
 }
