@@ -187,12 +187,12 @@ if ((! is_session_started ())) {
 		<div class="labelw150">NOME DO INDICADO 1:</div>
 		<div class="nomeindicado">
 		<?php
-		if (isset ( $_SESSION ["coordindicado1"] )) {
-			print ("<br/>INDICADO 1 :: " . $_SESSION ["coordindicado1"]) ;
+		if (isset ( $_SESSION ["consindicado1"] )) {
+			print ("<br/>INDICADO 1 :: " . $_SESSION ["consindicado1"]) ;
 			?>
 				<input type="hidden"
-				value="<?php print($_SESSION["coordindicado1"]); ?>"
-				name="indicado1" />
+				value="<?php print($_SESSION["consindicado1"]); ?>"
+				name="consindicado1" />
 				<?php
 		}
 		?>
@@ -200,11 +200,11 @@ if ((! is_session_started ())) {
 		<div class="labelw150">NOME DO INDICADO 2:</div>
 		<div class="nomeindicado">
 		<?php
-		print ("<br/>INDICADO 2 :: " . $_SESSION ["coordindicado2"]) ;
+		print ("<br/>INDICADO 2 :: " . $_SESSION ["consindicado2"]) ;
 		?>
 			<input type="hidden"
-				value="<?php print($_SESSION["coordindicado2"]); ?>"
-				name="indicado2" />
+				value="<?php print($_SESSION["consindicado2"]); ?>"
+				name="consindicado2" />
 			<?php
 			?>
 		</div>
@@ -212,11 +212,11 @@ if ((! is_session_started ())) {
 		<div class="labelw150">NOME DO INDICADO 3:</div>
 		<div class="nomeindicado">
 		<?php
-		print ("<br/>INDICADO 3 :: " . $_SESSION ["coordindicado3"]) ;
+		print ("<br/>INDICADO 3 :: " . $_SESSION ["consindicado3"]) ;
 		?>
 			<input type="hidden"
-				value="<?php print($_SESSION["coordindicado3"]); ?>"
-				name="indicado3" />
+				value="<?php print($_SESSION["consindicado3"]); ?>"
+				name="consindicado3" />
 			<?php
 			?>
 		</div>
@@ -225,11 +225,11 @@ if ((! is_session_started ())) {
 		<div class="labelw150">NOME DO INDICADO 4:</div>
 		<div class="nomeindicado">
 		<?php
-		print ("<br/>INDICADO 4 :: " . $_SESSION ["coordindicado4"]) ;
+		print ("<br/>INDICADO 4 :: " . $_SESSION ["consindicado4"]) ;
 		?>
 			<input type="hidden"
-				value="<?php print($_SESSION["coordindicado4"]); ?>"
-				name="indicado4" />
+				value="<?php print($_SESSION["consindicado4"]); ?>"
+				name="consindicado4" />
 			<?php
 			?>
 		</div>
@@ -237,11 +237,11 @@ if ((! is_session_started ())) {
 		<div class="labelw150">NOME DO INDICADO 3:</div>
 		<div class="nomeindicado">
 		<?php
-		print ("<br/>INDICADO 5 :: " . $_SESSION ["coordindicado5"]) ;
+		print ("<br/>INDICADO 5 :: " . $_SESSION ["consindicado5"]) ;
 		?>
 			<input type="hidden"
-				value="<?php print($_SESSION["coordindicado5"]); ?>"
-				name="indicado5" />
+				value="<?php print($_SESSION["consindicado5"]); ?>"
+				name="consindicado5" />
 			<?php
 			?>
 		</div>
