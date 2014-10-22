@@ -1,0 +1,67 @@
+
+
+.corpo {
+	width: 65%;
+	margin: 0 auto;
+	display: block;	
+}
+
+
+.step1 {
+	background-color: aqua;
+	padding: 30px;
+}
+
+
+
+.step2 {
+	background-color: green;
+	padding: 30px;
+}
+
+
+.step3 {
+	background-color: maroon;
+	padding: 30px;
+}
+
+
+.step4 {
+	background-color: orange;
+	padding: 10px;
+}
+
+.step5 {
+	background-color: #EE44FF;
+	padding: 30px;
+}
+.step6 {
+	background-color: #112345;
+	padding: 30px;
+}
+.step7 {
+	background-color: #AA9932;
+	padding: 30px;
+}
+.step8 {
+	background-color: #AA2874;
+	padding: 30px;
+}
+
+.step9 {
+	background-color: #CC9876;
+	padding: 30px;
+}
+
+.labelw100 {
+	width: 100px;
+}
+
+.labelw150 {
+	width: 150px;
+}
+
+.titulo {
+	
+	text-align: center;
+}
