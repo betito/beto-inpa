@@ -63,13 +63,13 @@ include_once 'functions.php';
 		print ("<br/>INDICADO 2 :: " . $_SESSION ["coordindicado2"]) ;
 	}
 	
-	if (isset ( $_SESSION ["conselhoindicado1"] )) {
+	if (isset ( $_SESSION ["consindicado1"] )) {
 		print ("<br/><b>CONSELHO </b><br/>") ;
-		print ("<br/>INDICADO 1 :: " . $_SESSION ["conselhoindicado1"]) ;
-		print ("<br/>INDICADO 2 :: " . $_SESSION ["conselhoindicado2"]) ;
-		print ("<br/>INDICADO 3 :: " . $_SESSION ["conselhoindicado3"]) ;
-		print ("<br/>INDICADO 4 :: " . $_SESSION ["conselhoindicado4"]) ;
-		print ("<br/>INDICADO 5 :: " . $_SESSION ["conselhoindicado5"]) ;
+		print ("<br/>INDICADO 1 :: " . $_SESSION ["consindicado1"]) ;
+		print ("<br/>INDICADO 2 :: " . $_SESSION ["consindicado2"]) ;
+		print ("<br/>INDICADO 3 :: " . $_SESSION ["consindicado3"]) ;
+		print ("<br/>INDICADO 4 :: " . $_SESSION ["consindicado4"]) ;
+		print ("<br/>INDICADO 5 :: " . $_SESSION ["consindicado5"]) ;
 	}
 	
 	

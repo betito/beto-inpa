@@ -91,7 +91,6 @@ if ((! is_session_started ())) {
 
 <div id="step4" class="step4">
 
-
 	<div class="textvotante">NOME DO VOTANTE / CARGO</div>
 
 	<div class="labelcargo">CARGO: COORDENADOR</div>
@@ -181,7 +180,7 @@ if ((! is_session_started ())) {
 
 	<div class="confirmacao">CONFIRMA&Ccedil;&Atilde;O DO VOTO</div>
 
-	<div class="labelcargo">CARGO: COORDENADOR</div>
+	<div class="labelcargo">CARGO: consENADOR</div>
 	<div class="labelcaord">CORDENA&Ccedil;&Atilde;O</div>
 	<form method="post" action="step7action.php">
 		<div class="labelw150">NOME DO INDICADO 1:</div>
@@ -192,7 +191,7 @@ if ((! is_session_started ())) {
 			?>
 				<input type="hidden"
 				value="<?php print($_SESSION["consindicado1"]); ?>"
-				name="consindicado1" />
+				name="indicado1" />
 				<?php
 		}
 		?>
@@ -204,7 +203,7 @@ if ((! is_session_started ())) {
 		?>
 			<input type="hidden"
 				value="<?php print($_SESSION["consindicado2"]); ?>"
-				name="consindicado2" />
+				name="indicado2" />
 			<?php
 			?>
 		</div>
@@ -216,7 +215,7 @@ if ((! is_session_started ())) {
 		?>
 			<input type="hidden"
 				value="<?php print($_SESSION["consindicado3"]); ?>"
-				name="consindicado3" />
+				name="indicado3" />
 			<?php
 			?>
 		</div>
@@ -229,19 +228,19 @@ if ((! is_session_started ())) {
 		?>
 			<input type="hidden"
 				value="<?php print($_SESSION["consindicado4"]); ?>"
-				name="consindicado4" />
+				name="indicado4" />
 			<?php
 			?>
 		</div>
 		
-		<div class="labelw150">NOME DO INDICADO 3:</div>
+		<div class="labelw150">NOME DO INDICADO 5:</div>
 		<div class="nomeindicado">
 		<?php
 		print ("<br/>INDICADO 5 :: " . $_SESSION ["consindicado5"]) ;
 		?>
 			<input type="hidden"
 				value="<?php print($_SESSION["consindicado5"]); ?>"
-				name="consindicado5" />
+				name="indicado5" />
 			<?php
 			?>
 		</div>
@@ -263,15 +262,12 @@ if ((! is_session_started ())) {
 
 	<div class="textvotante">NOME DO VOTANTE / CARGO</div>
 
-	<div class="labelcargo">CARGO: COORDENADOR</div>
+	<div class="labelcargo">CARGO: COONSELHO</div>
 	<div class="labelcaord">CORDENA&Ccedil;&Atilde;O</div>
 	<form method="post" action="step8action.php">
 		<div class="comprovante">COMPROVANTE</div>
 		<input type="button" class="botao" value="IMPRIMIR" /> <input
-			type="button" class="botao" value="GUARDAR" />
-		<!-- PQ Guardar ?? -->
-		<input type="button" class="botao" value="ENCERRAR" />
-		<!-- pq Encerrar -->
+			type="submit" class="botao" value="CONTINUAR" />
 	</form>
 
 
