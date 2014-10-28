@@ -10,7 +10,10 @@ if (is_session_started()==FALSE) {
 	
 if (isset ( $_SESSION ["currentstep"] )) {
 		
-		unset ($_SESSION);
+		unset ($_SESSION["matricula"]);
+		unset ($_SESSION["currentstep"]);
+		session_unset();
+		session_destroy();
 
 		// salvar no bd nesse ponto.
 		?>

@@ -20,7 +20,8 @@ if (isset ( $_POST )) {
 		
 			// save db. verify if this matricula has voted.
 		
-			$command = sprintf ( "insert into voto (matricula, datahorainicio) values ('%s', now()) ", $login);
+			$now = date("Y-m-d H:i:s");
+			$command = sprintf ( "insert into voto (matricula, datahorainicio) values ('%s', '%s') ", $login, $now);
 			print ($command);
  			
 // 			$res = Query ( $command );
