@@ -10,11 +10,8 @@ if (is_session_started()==FALSE) {
 	
 if (isset ( $_SESSION ["currentstep"] )) {
 		
-		$nextstep = $_SESSION ["currentstep"];
-		$nextstep = 9;
-		
-		$_SESSION ["currentstep"] = $nextstep;
-		$_SESSION ["confirmacons"] = "confirma";
+		unset ($_SESSION);
+
 		// salvar no bd nesse ponto.
 		?>
 		<!-- <meta http-equiv="refresh" content="0; url=index.php" /> -->
@@ -25,6 +22,7 @@ if (isset ( $_SESSION ["currentstep"] )) {
 	print ("<br/> Erro de valida&ccedil;&atilde; da Sess&atilde;o. <br/> Inicie a vota&ccedil&atilde;o. <br/>") ;
 	unset ( $_SESSION );
 	unset ( $_POST );
+	
 }
 ?>
 

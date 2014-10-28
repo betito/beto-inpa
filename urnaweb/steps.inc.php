@@ -277,6 +277,8 @@ if ((! is_session_started ())) {
 <div id="step9" class="step9">
 
 	<div class="labelcargo">FIM</div>
-	<input type="button" class="botao" value="FIM" />
+	<form method="post" action="step9action.php">
+		<input type="submit" class="botao" value="FIM" />
+	</form>
 
 </div>

@@ -40,7 +40,7 @@ include_once 'functions.php';
 				$currentstep = $_SESSION ["currentstep"];
 			}
 			
-			include_once 'coordenador.inc.php';
+			include_once 'steps.inc.php';
 		
 		?>
 

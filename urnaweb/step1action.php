@@ -9,6 +9,7 @@ if (isset ( $_POST )) {
 	$login = $_POST ["matricula"];
 	$pass = $_POST ["password"];
 	
+	
 	session_start ();
 	
 	if (isset ( $_SESSION ["currentstep"] )) {
@@ -19,11 +20,12 @@ if (isset ( $_POST )) {
 		
 			// save db. verify if this matricula has voted.
 		
-			$command = sprintf ( "insert into voto (matricula, datahorainicio) values ('%s', '%s') ", $login, "01/01/2014 00:00:00" );
+			$command = sprintf ( "insert into voto (matricula, datahorainicio) values ('%s', now()) ", $login);
+			print ($command);
+ 			
+// 			$res = Query ( $command );
 			
-			$res = Query ( $command );
-			
-			if ($res){
+// 			if ($res){
 				
 				// se tudo deu ok. continuar.
 				$nextstep = 2;
@@ -31,17 +33,17 @@ if (isset ( $_POST )) {
 				$_SESSION ["matricula"] = $login;
 				
 				$command = sprintf("select id from voto where matricula like '%s'", $login);
-				$res = Query ($command);
-				$id = "";
-				while ($f = mysql_fetch_assoc($res)){
-					$id = $f["id"];
-				}
+// 				$res = Query ($command);
+// 				$id = "";
+// 				while ($f = mysql_fetch_assoc($res)){
+// 					$id = $f["id"];
+// 				}
 				
-			} else {
+// 			} else {
 				
-				echo ("Erro no insert do BD <br/>");
+// 				echo ("Erro no insert do BD <br/>");
 				
-			}
+// 			}
 			
 			?>
 <meta http-equiv="refresh" content="0; url=index.php" />
