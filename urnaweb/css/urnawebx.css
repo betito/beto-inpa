@@ -6,6 +6,31 @@
 	display: block;	
 }
 
+.top {
+	height: 150px;
+}
+
+.topleft {
+	float: left;
+	width: 30%;
+	height: 120px;
+}
+
+.topright {
+	float: float;
+	text-align: center;
+	width: 90%;
+	height: 120px;
+	font-size: xx-large;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+.bottom {
+	
+}
 
 .step1 {
 	background-color: aqua;

@@ -24,11 +24,16 @@ include_once 'functions.php';
 <body>
 
 	<div class="corpo">
-		<div class="esquerda">
-			<img src="./imgs/inpa.png" class="esquerda" />
-		</div>
-		<div class="centro">SISTEMA DE VOTA&Ccedil;&Atilde;O</div>
+		<div class="top">
+			<div class="topleft">
+				<img src="./imgs/inpa.png" class="esquerda" />
+			</div>
+			<div class="topright">
+				<div class="center">SISTEMA DE VOTA&Ccedil;&Atilde;O</div>
+			</div>
 		
+		</div>
+		<div class="bottom">
 		<?php
 			if (is_session_started() == FALSE) session_start ();
 			
@@ -43,6 +48,7 @@ include_once 'functions.php';
 			include_once 'steps.inc.php';
 		
 		?>
+		</div>
 
 	</div>
 	

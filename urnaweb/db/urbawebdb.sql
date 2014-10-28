@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 -- Database: `urbawebdb`
 --
 CREATE DATABASE IF NOT EXISTS `urnawebdb`;
-use urbawebdb;
+use urnawebdb;
 -- --------------------------------------------------------
 
 --
