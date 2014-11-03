@@ -7,8 +7,8 @@ public class SpeKeySearch {
 	public static void main(String[] args) {
 
 		// String pubtables [] = {"category", "resumo", "anunciante"};
-		String pubtables[] = { "anunciante" };
-		Indexer indexer = new Indexer("sabesetemdb");
+		String pubtables[] = { "people" };
+		Indexer indexer = new Indexer("testri");
 		indexer.setPubTables(pubtables);
 		indexer.start();
 

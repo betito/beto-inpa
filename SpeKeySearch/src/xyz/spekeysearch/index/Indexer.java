@@ -8,11 +8,14 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class Indexer {
 
 	private String Database = "";
+	private int flushmax = 1000;
+	Connection conn = null;
 	ArrayList<String> listOfPubTables = null;
 
 	public Indexer() {
@@ -22,6 +25,14 @@ public class Indexer {
 	public Indexer(String database) {
 		super();
 		Database = database;
+	}
+
+	public int getFlushmax() {
+		return flushmax;
+	}
+
+	public void setFlushmax(int flushmax) {
+		this.flushmax = flushmax;
 	}
 
 	public String getDatabase() {
@@ -78,18 +89,17 @@ public class Indexer {
 
 		Statement st = null;
 		ResultSet rs = null;
-		Connection con = null;
 		DatabaseMetaData dbm = null;
 		ArrayList<String> listOfTables = new ArrayList<String>();
 
 		try {
 			System.out.println("Listing all table name in Database!");
-			con = connecDB();
+			this.conn = connecDB();
 			st = connectDBAndCreateStatement();
 
 			rs = st.executeQuery("SELECT VERSION()");
 
-			dbm = con.getMetaData();
+			dbm = conn.getMetaData();
 			String[] types = { "TABLE" };
 			rs = dbm.getTables(null, null, "%", types);
 			System.out.println("Table name:");
@@ -134,31 +144,37 @@ public class Indexer {
 									.split("\\s+");
 
 							for (int g = 0; g < data.length; g++) {
+								System.out.println("\t->" + data[g]);
 								docFreq.insertData(docname, data[g]);
+								totbuffer++;
 							}
 						}
 
-						if (totbuffer == 1000) {
+						if (totbuffer == this.flushmax) {
 
 							// insert db
+
+							insertDB(docFreq);
 
 							totbuffer = 0;
 						}
 
 					}
 
-					if (totbuffer > 0) {
-						// inser o restante do databuffer
+					System.out.println("...next...");
+				}
 
-					}
-					System.out.println("...");
+				// inser o restante do databuffer
+				if (totbuffer > 0) {
+					insertDB(docFreq);
+
 				}
 
 				System.out.println("....");
 
 			}
 
-			con.close();
+			conn.close();
 
 		} catch (SQLException ex) {
 			System.err.println(ex.getMessage());
@@ -170,16 +186,59 @@ public class Indexer {
 
 	}
 
-	private void CreateInvertedTables() {
-
-		Statement st = connectDBAndCreateStatement();
+	private void insertDB(TermFreq docf) {
 
 		try {
+			StringBuilder alldata = new StringBuilder();
+			alldata.append("INSERT INTO __docfreq (term, doc, freq) VALUES ");
+
+			System.out
+					.println("\n\n------------------ DB ------------------\n\n");
+			System.out.printf("TERM\t->\tDOC\t->\tFREQ\n");
+			for (Enumeration<String> eni = docf.getDataOccur().keys(); eni
+					.hasMoreElements();) {
+				String term = eni.nextElement();
+				Hashtable<String, Integer> tmp = docf.getDataOccur().get(term);
+				for (Enumeration<String> enj = tmp.keys(); enj
+						.hasMoreElements();) {
+					String doc = enj.nextElement();
+					Integer freq = tmp.get(doc);
+
+					System.out.printf("%s\t->\t%s\t->\t%d\n", term, doc, freq);
+					alldata.append(" (\"" + term + "\",\"" + doc + "\"," + freq
+							+ "),\n");
+
+				}
+			}
+			int delx = alldata.lastIndexOf(",\n");
+			alldata.replace(delx, delx+3, "");
+			alldata.append(";");
+			System.out.println(alldata.toString());
+
+			Statement st = connectDBAndCreateStatement();
+			st.executeUpdate(alldata.toString());
+
+			System.out.println("\n\n     ....... DONE ..........\n\n");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	private void CreateInvertedTables() {
+
+		Connection conn = connecDB();
+		Statement st = null;
+
+		try {
+			st = conn.createStatement();
 			System.out.print("Creating inverted index...");
-			ResultSet rs = st
-					.executeQuery("CREATE TABLE IF NOT EXISTS __docfreq ( "
-							+ " term varchar(30) primary key not null, "
-							+ " doc varchar(30), int freq);");
+			st.executeUpdate("DROP TABLE IF EXISTS __docfreq");
+			st.executeUpdate("CREATE TABLE __docfreq ( "
+					+ "occur integer primary key not null auto_increment, "
+					+ " term varchar(30) not null, "
+					+ " doc varchar(40), freq integer);");
 			System.out.println("...DONE!");
 		} catch (SQLException e) {
 			e.printStackTrace();

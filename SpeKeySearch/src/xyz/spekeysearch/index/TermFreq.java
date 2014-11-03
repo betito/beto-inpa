@@ -39,10 +39,16 @@ public class TermFreq {
 		
 		if (DataOccur.containsKey(term)) {
 			Hashtable<String, Integer> docs = this.DataOccur.get(term);
-			Integer value = docs.get(doc);
-			value++;
-			docs.put(doc, value);
-			DataOccur.put(term, docs);
+			if (docs.containsKey(doc)){
+				Integer value = docs.get(doc);
+				value++;
+				docs.put(doc, value);
+				DataOccur.put(term, docs);
+			}else{
+				Hashtable<String, Integer> tmpdoc = new Hashtable<String, Integer>();
+				docs.put(doc, new Integer(1));
+				DataOccur.put(term, docs);
+			}
 		} else {
 			Hashtable<String, Integer> docs = new Hashtable<String, Integer>();
 			docs.put(doc, new Integer(1));
