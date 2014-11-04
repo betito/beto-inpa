@@ -33,6 +33,11 @@ public class Search {
 			Statement st = this.conn.getConnection().createStatement();
 			ResultSet rs = st.executeQuery("select * from __docfreq");
 			while (rs.next()){
+				String term = rs.getString("term");
+				String doc = rs.getString("doc");
+				Integer freq = rs.getInt("freq");
+				
+				//adicionar esse resultado ao SearchResult
 				
 			}
 
