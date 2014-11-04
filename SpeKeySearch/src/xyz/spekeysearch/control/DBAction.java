@@ -2,14 +2,16 @@ package xyz.spekeysearch.control;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-public class ConnectDB {
+public class DBAction {
 
 	private Connection conn = null;
 	private String Database = "";
 
-	public ConnectDB(String db) {
+	public DBAction(String db) {
 		super();
 		connecDB();
 	}
@@ -36,6 +38,24 @@ public class ConnectDB {
 
 	public Connection getConnection() {
 		return this.conn;
+	}
+
+	public ResultSet doSelect(String command) {
+		ResultSet rs = null;
+		try {
+
+			rs = this.conn.createStatement().executeQuery(command);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rs;
+	}
+
+	public Statement doUpdate(String command) {
+
+		return null;
 	}
 
 }

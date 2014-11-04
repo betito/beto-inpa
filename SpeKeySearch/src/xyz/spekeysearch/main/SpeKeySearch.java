@@ -1,6 +1,6 @@
 package xyz.spekeysearch.main;
 
-import xyz.spekeysearch.index.Indexer;
+import xyz.spekeysearch.search.Search;
 
 public class SpeKeySearch {
 
@@ -8,9 +8,16 @@ public class SpeKeySearch {
 
 		// String pubtables [] = {"category", "resumo", "anunciante"};
 		String pubtables[] = { "people" };
-		Indexer indexer = new Indexer("testri");
-		indexer.setPubTables(pubtables);
-		indexer.start();
+		
+		// INDEX
+		
+//		Indexer indexer = new Indexer("testri");
+//		indexer.setPubTables(pubtables);
+//		indexer.start();
+		
+		// SEARCH
+		Search search = new Search("testri", "martha");
+		search.go();
 
 	}
 

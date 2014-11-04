@@ -2,21 +2,30 @@ package xyz.spekeysearch.search;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-import xyz.spekeysearch.control.ConnectDB;
+import xyz.spekeysearch.control.DBAction;
 
 public class Search {
 
 	private String query = "";
 	private String keys[] = null;
-	private ConnectDB conn = null;
+	private DBAction conn = null;
+	private String Database = "";
 
 	public Search() {
 		super();
 	}
 
-	public Search(String qry) {
+	public Search(String db) {
+
+		this.Database = db;
+		this.conn = new DBAction(this.Database);
+	}
+
+	public Search(String db, String qry) {
+
+		this.Database = db;
+		this.conn = new DBAction(this.Database);
 		this.query = qry;
 		if (!(this.query.trim().equals(""))) {
 			keys = qry.split("\\s+");
@@ -26,19 +35,28 @@ public class Search {
 	public SearchResult go() {
 
 		if (this.conn == null) {
-			this.conn = new ConnectDB("");
+			this.conn = new DBAction(this.Database);
 		}
 
 		try {
-			Statement st = this.conn.getConnection().createStatement();
-			ResultSet rs = st.executeQuery("select * from __docfreq");
-			while (rs.next()){
-				String term = rs.getString("term");
-				String doc = rs.getString("doc");
-				Integer freq = rs.getInt("freq");
-				
-				//adicionar esse resultado ao SearchResult
-				
+
+			for (String k : this.keys) {
+
+				String command = "select * from __docfreq where term like \"" + k + "\"";
+				System.out.println(command);
+				ResultSet rs = this.conn.doSelect(command);
+				System.out.println("# " + k);
+				while (rs.next()) {
+					String term = rs.getString("term");
+					String doc = rs.getString("doc");
+					Integer freq = rs.getInt("freq");
+
+					// adicionar esse resultado ao SearchResult
+
+					System.out.println("\t-> " + doc + "\t= "
+							+ freq.toString());
+
+				}
 			}
 
 		} catch (SQLException e) {
