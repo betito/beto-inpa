@@ -17,7 +17,7 @@ public class SpeKeySearch {
 		indexer.start();
 		
 		// SEARCH
-		Search search = new Search("testri", "martha white");
+		Search search = new Search("testri", "roberto brown azul");
 		search.go();
 
 	}
