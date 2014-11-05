@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `testri`
 --
-CREATE TABLE IF NOT EXISTS `testri`;
+CREATE DATABASE IF NOT EXISTS `testri`;
 USE  `testri`;
 -- --------------------------------------------------------
 
