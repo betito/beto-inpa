@@ -112,6 +112,9 @@ public class Indexer {
 
 			// Process the content of each publishable table
 			CreateInvertedTables();
+			
+			TermFreq docFreq = new TermFreq();
+			int totbuffer = 0;
 
 			for (int i = 0; i < listOfTables.size(); i++) {
 				System.out.println("TABLE ::\t" + listOfTables.get(i)
@@ -131,13 +134,11 @@ public class Indexer {
 				// parse all registers and insert them into the inverted list
 
 
-				int totbuffer = 0;
-				TermFreq docFreq = new TermFreq();
 				while (rs.next()) {
 					for (int j = 0; j < columnName.length; j++) {
 						System.out.println(columnName[j] + " --> "
 								+ rs.getString(j + 1));
-						String docname = this.listOfPubTables.get(i) + "__"
+						String docname = listOfTables.get(i) + "__"
 								+ columnName[j];
 						if (!(rs.getString(j + 1).isEmpty())) {
 							String[] data = rs.getString(j + 1).toLowerCase()
@@ -150,6 +151,7 @@ public class Indexer {
 							}
 						}
 
+						/*
 						if (totbuffer == this.flushmax) {
 
 							// insert db
@@ -157,7 +159,7 @@ public class Indexer {
 							insertDB(docFreq);
 
 							totbuffer = 0;
-						}
+						}*/
 
 					}
 
@@ -165,13 +167,14 @@ public class Indexer {
 				}
 
 				// inser o restante do databuffer
-				if (totbuffer > 0) {
-					insertDB(docFreq);
-
-				}
 
 				System.out.println("....");
 
+			}
+			
+			if (totbuffer > 0) {
+				insertDB(docFreq);
+				
 			}
 
 			conn.close();

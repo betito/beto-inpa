@@ -34,6 +34,8 @@ public class Search {
 
 	public SearchResult go() {
 
+		SearchResult searchResult = new SearchResult();
+		
 		if (this.conn == null) {
 			this.conn = new DBAction(this.Database);
 		}
@@ -55,6 +57,9 @@ public class Search {
 
 					System.out.println("\t-> " + doc + "\t= "
 							+ freq.toString());
+					
+					
+					
 
 				}
 			}
