@@ -13,6 +13,7 @@ public class DBAction {
 
 	public DBAction(String db) {
 		super();
+		this.Database = db;
 		connecDB();
 	}
 
@@ -45,7 +46,7 @@ public class DBAction {
 		try {
 
 			rs = this.conn.createStatement().executeQuery(command);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

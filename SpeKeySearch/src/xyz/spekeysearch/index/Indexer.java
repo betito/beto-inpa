@@ -111,6 +111,7 @@ public class Indexer {
 			listOfTables = deleteNotPublishableTables(listOfTables);
 
 			// Process the content of each publishable table
+			CreateInvertedTables();
 
 			for (int i = 0; i < listOfTables.size(); i++) {
 				System.out.println("TABLE ::\t" + listOfTables.get(i)
@@ -129,7 +130,6 @@ public class Indexer {
 
 				// parse all registers and insert them into the inverted list
 
-				CreateInvertedTables();
 
 				int totbuffer = 0;
 				TermFreq docFreq = new TermFreq();

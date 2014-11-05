@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 04, 2014 at 06:54 PM
+-- Generation Time: Nov 04, 2014 at 10:44 PM
 -- Server version: 5.5.17
 -- PHP Version: 5.2.17
 
@@ -19,15 +19,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `testri`
 --
-CREATE DATABASE IF NOT EXISTS `testri` (
-use `testri`;
+CREATE TABLE IF NOT EXISTS `testri`;
+USE  `testri`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `info`
+--
+
+CREATE TABLE IF NOT EXISTS `info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `address` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `address` (`address`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `info`
+--
+
+INSERT INTO `info` (`id`, `address`) VALUES
+(2, 'rua flores white'),
+(1, 'rua waldemar jardim martha');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `people`
 --
-
-
 
 CREATE TABLE IF NOT EXISTS `people` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -58,30 +77,38 @@ CREATE TABLE IF NOT EXISTS `__docfreq` (
   `doc` varchar(40) DEFAULT NULL,
   `freq` int(11) DEFAULT NULL,
   PRIMARY KEY (`occur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `__docfreq`
 --
 
 INSERT INTO `__docfreq` (`occur`, `term`, `doc`, `freq`) VALUES
-(1, 'martha', 'people__name', 2),
-(2, 'dos', 'people__color', 2),
-(3, 'dos', 'people__name', 2),
-(4, 'oliveira', 'people__name', 2),
-(5, 'arruda', 'people__name', 1),
-(6, 'marina', 'people__name', 1),
-(7, 'roberto', 'people__name', 1),
-(8, 'white', 'people__color', 2),
-(9, 'white', 'people__name', 1),
-(10, 'pink', 'people__color', 1),
-(11, 'brown', 'people__color', 1),
-(12, '4', 'people__id', 1),
-(13, '3', 'people__id', 1),
-(14, 'azul', 'people__color', 1),
-(15, '2', 'people__id', 1),
-(16, '1', 'people__id', 1),
-(17, 'joao', 'people__name', 1);
+(1, 'jardim', 'people__address', 1),
+(2, 'white', 'people__address', 1),
+(3, '2', 'people__id', 1),
+(4, '1', 'people__id', 1),
+(5, 'waldemar', 'people__address', 1),
+(6, 'martha', 'people__address', 1),
+(7, 'flores', 'people__address', 1),
+(8, 'rua', 'people__address', 2),
+(9, 'martha', 'info__name', 2),
+(10, 'dos', 'info__name', 2),
+(11, 'dos', 'info__color', 2),
+(12, 'oliveira', 'info__name', 2),
+(13, 'arruda', 'info__name', 1),
+(14, 'marina', 'info__name', 1),
+(15, 'roberto', 'info__name', 1),
+(16, 'white', 'info__name', 1),
+(17, 'white', 'info__color', 2),
+(18, 'pink', 'info__color', 1),
+(19, 'brown', 'info__color', 1),
+(20, '4', 'info__id', 1),
+(21, '3', 'info__id', 1),
+(22, 'azul', 'info__color', 1),
+(23, '2', 'info__id', 1),
+(24, '1', 'info__id', 1),
+(25, 'joao', 'info__name', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
