@@ -11,16 +11,16 @@ public class SpeKeySearch {
 		String pubtables[] = { "people", "info" };
 		
 		// INDEX
-		Indexer indexer = new Indexer("testri");
-		indexer.setPubTables(pubtables);
-		indexer.start();
-		
+//		Indexer indexer = new Indexer("testri");
+//		indexer.setPubTables(pubtables);
+//		indexer.start();
+//		
 		
 		
 		
 		// SEARCH
-//		Search search = new Search("testri", "roberto brown azul martha");
-//		search.go();
+		Search search = new Search("testri", "roberto brown azul martha");
+		search.go();
 
 	}
 

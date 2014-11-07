@@ -35,7 +35,7 @@ public class Search {
 	public SearchResult go() {
 
 		SearchResult searchResult = new SearchResult();
-		
+
 		if (this.conn == null) {
 			this.conn = new DBAction(this.Database);
 		}
@@ -44,7 +44,8 @@ public class Search {
 
 			for (String k : this.keys) {
 
-				String command = "select * from __docfreq where term like \"" + k + "\"";
+				String command = "select * from __docfreq where term like \""
+						+ k + "\"";
 				System.out.println(command);
 				ResultSet rs = this.conn.doSelect(command);
 				System.out.println("# " + k);
@@ -55,11 +56,8 @@ public class Search {
 
 					// adicionar esse resultado ao SearchResult
 
-					System.out.println("\t-> " + doc + "\t= "
-							+ freq.toString());
-					
-					
-					
+					System.out
+							.println("\t-> " + doc + "\t= " + freq.toString());
 
 				}
 			}
@@ -72,11 +70,3 @@ public class Search {
 	}
 
 }
-
-
-
-
-
-
-
-
