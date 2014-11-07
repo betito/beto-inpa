@@ -15,9 +15,12 @@ public class SpeKeySearch {
 		indexer.setPubTables(pubtables);
 		indexer.start();
 		
+		
+		
+		
 		// SEARCH
-		Search search = new Search("testri", "roberto brown azul martha");
-		search.go();
+//		Search search = new Search("testri", "roberto brown azul martha");
+//		search.go();
 
 	}
 
