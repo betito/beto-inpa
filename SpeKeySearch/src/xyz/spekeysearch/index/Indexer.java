@@ -113,6 +113,7 @@ public class Indexer {
 
 			// delete tables not publishable
 			listOfTables = deleteNotPublishableTables(listOfTables);
+			this.listOfPubTables = listOfTables;
 
 			TermFreq docFreq = new TermFreq();
 			int totbuffer = 0;
@@ -121,7 +122,7 @@ public class Indexer {
 				System.out.println("TABLE ::\t" + listOfTables.get(i)
 						+ "\n=============================");
 
-				rs = st.executeQuery("SELECT * FROM " + listOfTables.get(i));
+				rs = st.executeQuery("SELECT * FROM " + this.listOfPubTables.get(i));
 				// get columns names
 				ResultSetMetaData metaData = rs.getMetaData();
 				int count = metaData.getColumnCount(); // number of column

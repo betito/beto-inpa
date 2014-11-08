@@ -14,7 +14,6 @@ public class SpeKeySearch {
 //		Indexer indexer = new Indexer("testri");
 //		indexer.setPubTables(pubtables);
 //		indexer.start();
-//		
 		
 		
 		
