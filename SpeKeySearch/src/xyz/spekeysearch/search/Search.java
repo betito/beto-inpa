@@ -2,6 +2,7 @@ package xyz.spekeysearch.search;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import xyz.spekeysearch.control.DBAction;
 
@@ -54,12 +55,22 @@ public class Search {
 					String doc = rs.getString("doc");
 					Integer freq = rs.getInt("freq");
 
-					// adicionar esse resultado ao SearchResult
-
-					System.out
-							.println("\t-> " + doc + "\t= " + freq.toString());
+					searchResult.add(term, doc, freq);
 
 				}
+			}
+
+			ArrayList<String> tmp = searchResult.getTerms();
+			for (int i = 0; i < tmp.size(); i++) {
+				System.out.println(tmp.get(i));
+
+				ArrayList<String> docs = searchResult.getDocs(tmp.get(i));
+				for (int j = 0; j < docs.size(); j++) {
+					System.out.printf("\t[%d] %s\n",
+							searchResult.getFreq(tmp.get(i), docs.get(j)),
+							docs.get(j));
+				}
+
 			}
 
 		} catch (SQLException e) {
