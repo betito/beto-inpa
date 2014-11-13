@@ -5,6 +5,6 @@ import xyz.spekeysearch.search.SearchResult;
 
 public interface IRanking {
 	
-	public RankedDocs ranking (SearchResult searchres);
+	public RankedDocs ranking (String [] queryKeys, SearchResult searchres);
 	
 }

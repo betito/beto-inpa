@@ -35,13 +35,15 @@ public class Search {
 
 	public SearchResult go() {
 
-		SearchResult searchResult = new SearchResult();
+		SearchResult searchResult = null;
 
 		if (this.conn == null) {
 			this.conn = new DBAction(this.Database);
 		}
 
 		try {
+
+			searchResult = new SearchResult();
 
 			for (String k : this.keys) {
 
@@ -77,7 +79,7 @@ public class Search {
 			e.printStackTrace();
 		}
 
-		return null;
+		return searchResult;
 	}
 
 }
