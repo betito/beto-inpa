@@ -9,24 +9,24 @@ public class SpeKeySearch {
 
 	public static void main(String[] args) {
 
-		// String pubtables [] = {"category", "resumo", "anunciante"};
+//		String pubtables[] = { "category", "resumo", "anunciante" };
 		String pubtables[] = { "people", "info" };
 		String db = "testri";
 		String query = "roberto brown azul martha";
-		
+
 		// INDEX
-//		Indexer indexer = new Indexer("testri");
-//		indexer.setPubTables(pubtables);
-//		indexer.start();
-		
-		
+		// Indexer indexer = new Indexer("testri");
+		// indexer.setPubTables(pubtables);
+		// indexer.start();
+
 		// SEARCH
-		Search search = new Search( db, query );
+		Search search = new Search(db, query);
 		SearchResult searchres = search.go();
-		
+
 		// RANKING
-		RankedDocs rankedDocs = new VectorModel().ranking(query.split("\\s+"), searchres);
-		
+		RankedDocs rankedDocs = new VectorModel().ranking(query.split("\\s+"),
+				searchres);
+
 	}
 
 }

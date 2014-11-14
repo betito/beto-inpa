@@ -16,20 +16,55 @@ public class VectorModel implements IRanking {
 		
 		Hashtable<String, Float> wQ = new Hashtable<String, Float>(queryKeys.length);
 		
-		// compuiting the wigth fot query
+		// compuiting the weigth for query
 		
+		// query
 		for (String k : queryKeys){
 			
 			ArrayList<String> docs = searchres.getDocs(k);
+			
 			for (int i =0; i < docs.size(); i++){
-				System.out.printf("QK\t: %s\t[%3g]", k, docs.get(i));
+				
+				Integer freq = searchres.getFreq(k, docs.get(i));
+				Float idf = searchres.getTermIdf(k);
+				
+				System.out.printf("QK (%s)\t: %s\t[%d]\t[%3g]\n", docs.get(i), k, freq, idf);
+				
+				Float weight = computingWeight (freq, idf);
+				
+				wQ.put(k, weight);
+				
 			}
 			
 		}
 		
+		// collection
+//		for (String k : queryKeys){
+//			
+//			ArrayList<String> docs = searchres.getDocs(k);
+//			
+//			for (int i =0; i < docs.size(); i++){
+//				
+//				Integer freq = searchres.getFreq(k, docs.get(i));
+//				Float idf = searchres.getTermIdf(k);
+//				
+//				System.out.printf("QK (%s)\t: %s\t[%d]\t[%3g]\n", docs.get(i), k, freq, idf);
+//				
+//				Float weight = computingWeight (freq, idf);
+//				
+//				wQ.put(k, weight);
+//				
+//			}
+//			
+//		}
+//		
 		
 		
 		
 		return null;
+	}
+
+	private Float computingWeight(Integer freq, Float idf) {
+		return new Float(freq * idf);
 	}
 }

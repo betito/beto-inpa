@@ -47,17 +47,18 @@ public class Search {
 
 			for (String k : this.keys) {
 
-				String command = "select * from __docfreq where term like \""
+				String command = "select * from __docfreq d inner join __idf i on d.term = i.term where d.term like \""
 						+ k + "\"";
 				System.out.println(command);
 				ResultSet rs = this.conn.doSelect(command);
 				System.out.println("# " + k);
 				while (rs.next()) {
-					String term = rs.getString("term");
+					String term = rs.getString("d.term");
 					String doc = rs.getString("doc");
 					Integer freq = rs.getInt("freq");
+					Float score = rs.getFloat("score");
 
-					searchResult.add(term, doc, freq);
+					searchResult.add(term, doc, freq, score);
 
 				}
 			}
@@ -68,9 +69,9 @@ public class Search {
 
 				ArrayList<String> docs = searchResult.getDocs(tmp.get(i));
 				for (int j = 0; j < docs.size(); j++) {
-					System.out.printf("\t[%d] %s\n",
+					System.out.printf("\t[%d] [%.5g] %s\n",
 							searchResult.getFreq(tmp.get(i), docs.get(j)),
-							docs.get(j));
+							searchResult.getTermIdf(tmp.get(i)), docs.get(j));
 				}
 
 			}
