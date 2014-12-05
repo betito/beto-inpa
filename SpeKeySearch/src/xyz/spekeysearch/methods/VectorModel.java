@@ -1,6 +1,7 @@
 package xyz.spekeysearch.methods;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 import xyz.spekeysearch.interfaces.IRanking;
@@ -38,6 +39,13 @@ public class VectorModel implements IRanking {
 			
 		}
 		
+		for (Enumeration<String> en = wQ.keys(); en.hasMoreElements();) {
+			String t = en.nextElement();
+			
+			
+			System.out.printf("%s = %.5g\n", t, wQ.get(t));
+			
+		}
 		// collection
 //		for (String k : queryKeys){
 //			
