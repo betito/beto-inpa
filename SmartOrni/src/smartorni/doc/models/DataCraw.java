@@ -3,18 +3,20 @@ package smartorni.doc.models;
 public class DataCraw {
 
 	private String Link;
-	private String Name;
+	private String CommonName;
+	private String ScientificName;
 
-	public DataCraw(String link, String name) {
-		super();
-		Link = link;
-		Name = name;
-	}
-	
 	public DataCraw() {
 		super();
 	}
-	
+
+	public DataCraw(String link, String commonName, String scientificName) {
+		super();
+		Link = link;
+		CommonName = commonName;
+		ScientificName = scientificName;
+	}
+
 	public String getLink() {
 		return Link;
 	}
@@ -23,12 +25,27 @@ public class DataCraw {
 		Link = link;
 	}
 
-	public String getName() {
-		return Name;
+	public String getCommonName() {
+		return CommonName;
 	}
 
-	public void setName(String name) {
-		Name = name;
+	public void setCommonName(String commonName) {
+		CommonName = commonName;
 	}
+
+	public String getScientificName() {
+		return ScientificName;
+	}
+
+	public void setScientificName(String scientificName) {
+		ScientificName = scientificName;
+	}
+	
+	public void printAll (){
+		System.out.println("Link\t"+this.getLink());
+		System.out.println("Common Name\t"+this.getCommonName());
+		System.out.println("Scient Name\t"+this.getScientificName());
+	}
+	
 
 }
