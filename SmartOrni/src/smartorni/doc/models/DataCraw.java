@@ -43,6 +43,8 @@ public class DataCraw {
 	
 	public String getCanonicalCommonName (){
 		
+		String name = getCanonicalCommonName().replaceAll("\\s+", "");
+		
 		return null;
 	}
 	
