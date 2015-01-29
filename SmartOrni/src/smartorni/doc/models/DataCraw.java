@@ -41,6 +41,11 @@ public class DataCraw {
 		ScientificName = scientificName;
 	}
 	
+	public String getCanonicalCommonName (){
+		
+		return null;
+	}
+	
 	public void printAll (){
 		System.out.println("Link\t"+this.getLink());
 		System.out.println("Common Name\t"+this.getCommonName());
