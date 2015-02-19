@@ -68,20 +68,22 @@ public class WrapperXenoCanto {
 			System.out.printf("%5d\t:: %s\n", c, matcher.group(1));
 
 			String line = matcher.group(1);
-			Pattern plink = Pattern.compile("data-xc-filepath='(.+?mp3)'");
+			Pattern plink = Pattern.compile(".*data-xc-filepath='(.+?mp3)'.*");
 			Pattern pcommon = Pattern
-					.compile("span class='common-name'><a href='/species/.*'>(.+?)</a></span>");
+					.compile(".*span class='common-name'><a href=.+?>(.+?)</a></span>.*");
 			Pattern pscientific = Pattern
-					.compile("<span class='scientific-name'>(.+?)</span>");
+					.compile(".*<span class='scientific-name'>(.+?)</span>.*");
 
 			DataCraw dcraw = new DataCraw();
-			dcraw.setLink(getData(line, plink));
-			dcraw.setCommonName(getData(line, pcommon));
-			dcraw.setScientificName(getData(line, pscientific));
+			if (getData(line, plink) != null) {
+				dcraw.setLink(getData(line, plink));
+				dcraw.setCommonName(getData(line, pcommon));
+				dcraw.setScientificName(getData(line, pscientific));
+				addDataCraw(dcraw);
+			}
 
-			addDataCraw(dcraw);
 		}
-		
+
 		printDataCraw();
 		getSounds();
 
@@ -93,38 +95,47 @@ public class WrapperXenoCanto {
 
 	private String getData(String line, Pattern ptn) {
 		Matcher m = ptn.matcher(line);
-		if (m.find()) {
+		if (m.matches()) {
 			return m.group(1);
 		}
 
 		return null;
 
 	}
-	
-	public void printDataCraw (){
-		
-		for (int w = 0; w < this.dataCraw.size(); w++){
+
+	public void printDataCraw() {
+
+		for (int w = 0; w < this.dataCraw.size(); w++) {
 			DataCraw dtmp = this.dataCraw.get(w);
 			dtmp.printAll();
 		}
-		
+
 	}
-	
-	private void getSounds (){
-		
-		for (int w = 0; w < this.dataCraw.size(); w++){
+
+	private void getSounds() {
+
+		for (int w = 0; w < this.dataCraw.size(); w++) {
 			DataCraw dtmp = this.dataCraw.get(w);
-			
-			if (dtmp.getLink() != null){
-				saveSound(dtmp.getLink(), "/bases/xenocanto/"+dtmp.getCanonicalCommonName());
+
+			if (dtmp.getLink() != null) {
+
+				try {
+					saveSound(dtmp.getLink(), "./bases/xenocanto/sounds/"
+							+ dtmp.getCanonicalCommonName() + "_" + w + ".mp3");
+					// saveSound(dtmp.getLink(),
+					// "/bases/xenocanto/" + w + ".mp3");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 			}
-			
-	
+
 		}
-		
+
 	}
-	
-	public static void saveSound(String saveurl, String destinationFile) throws IOException {
+
+	public static void saveSound(String saveurl, String destinationFile)
+			throws IOException {
 		URL url = new URL(saveurl);
 		InputStream is = url.openStream();
 		OutputStream os = new FileOutputStream(destinationFile);
@@ -139,7 +150,5 @@ public class WrapperXenoCanto {
 		is.close();
 		os.close();
 	}
-	
-	
 
 }

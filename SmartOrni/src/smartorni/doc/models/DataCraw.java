@@ -22,6 +22,7 @@ public class DataCraw {
 	}
 
 	public void setLink(String link) {
+		System.out.println(link);
 		Link = link;
 	}
 
@@ -31,6 +32,8 @@ public class DataCraw {
 
 	public void setCommonName(String commonName) {
 		CommonName = commonName;
+		System.out.println(this.CommonName);
+		System.out.println(this.getCanonicalCommonName());
 	}
 
 	public String getScientificName() {
@@ -38,14 +41,15 @@ public class DataCraw {
 	}
 
 	public void setScientificName(String scientificName) {
+		System.out.println(scientificName);
 		ScientificName = scientificName;
 	}
 	
 	public String getCanonicalCommonName (){
-		
-		String name = getCanonicalCommonName().replaceAll("\\s+", "");
-		
-		return null;
+		String name = getCommonName().replaceAll("\\s+", "_");
+		name = name.replaceAll("'", "_");
+		System.out.println("Canonical NAME::\t" + name);
+		return name;
 	}
 	
 	public void printAll (){
