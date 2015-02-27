@@ -1,9 +1,21 @@
-name="Papa-formiga-barrado_"
+if getos() == 'Windows' then unix('del *.dat');
+else unix('rm -f *.dat'); end
 
-for  i = 5 : 6
-    filename = name + string(i)
+
+localdir="./*.wav"
+listoffiles = listfiles(localdir)
+//disp(listoffiles(:))
+
+[numfiles, y] = size(listoffiles)
+disp(numfiles)
+disp(y)
+
+for  i = 1 : numfiles
+    filename = listoffiles(i, y)
     disp(filename)
-    data = readwav(filename + ".wav")
-    write (filename + ".dat", data)
+    data = wavread(filename)
+    write(filename + ".dat", data)
+    data = 0
 end
 
+disp ("Fim...")
