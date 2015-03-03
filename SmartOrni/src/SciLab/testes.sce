@@ -1,8 +1,26 @@
 
-clf()
-x = [0 1 2 7]
-y = [0 2 4 5; 2 3 4 10]
+localdir="./*.wav"
+listoffiles = listfiles(localdir)
+//disp(listoffiles(:))
 
-plot2d(x,y(2,:))
+[numfiles, y] = size(listoffiles)
+//disp(numfiles)
+//disp(y)
 
-//disp(y(1,:))
+listoffiles = ["_Inambari-Tambopata__Antwren_0.wav" "Papa-formiga-barrado_7.wav"]
+data = read(listoffiles(1,1) + ".dat", -1,240000)
+
+listoffiles = ["_Inambari-Tambopata__Antwren_0.wav" "Papa-formiga-barrado_7.wav"]
+for  i = 1:2
+    filename = listoffiles(1,i)
+    disp(filename)
+    [x,y] = loadwave(filename)
+    [i, j] = size(x)
+//    disp(x)
+    disp(y)
+    disp(i)
+    disp(j)
+end
+    
+disp ("Fim...")
+
