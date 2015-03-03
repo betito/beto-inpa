@@ -1,6 +1,3 @@
-if getos() == 'Windows' then unix('del *.dat');
-else unix('rm -f *.dat'); end
-
 
 localdir="./*.wav"
 listoffiles = listfiles(localdir)
@@ -11,13 +8,14 @@ disp(numfiles)
 disp(y)
 
 listoffiles = ["_Inambari-Tambopata__Antwren_0.wav" "Papa-formiga-barrado_7.wav"]
-for  i = 1:2
-    filename = listoffiles(i:1)
-    disp(filename)
-    data = wavread(filename)
-    write(filename + ".dat", data)
-    data = 0
-end
+data = read(listoffiles(1,1) + ".dat", -1,240000)
+
+subplot(311)
+plot2d(data(1,:))
+subplot(312)
+plot2d(data(2,:))
+subplot(313)
+plot2d(data(3,:))
 
 disp ("Fim...")
 
