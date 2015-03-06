@@ -15,11 +15,11 @@ for  i = 1:2
     filename = listoffiles(1,i)
     disp(filename)
     [x,y] = loadwave(filename)
-    [i, j] = size(x)
+    [linhas, colunas] = size(x)
 //    disp(x)
     disp(y)
-    disp(i)
-    disp(j)
+    disp(linhas)
+    disp(colunas)
 end
     
 disp ("Fim...")

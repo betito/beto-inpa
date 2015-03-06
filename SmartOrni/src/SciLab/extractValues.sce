@@ -13,7 +13,7 @@ disp(listoffiles(:))
 for  i = 1:2
     filename = listoffiles(1:i)
     disp(filename)
-    data = wavread(filename)
+    data = loadwave(filename)
 //    write(filename + ".dat", data)
     data = 0
 end
